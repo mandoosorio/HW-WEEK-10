@@ -17,7 +17,7 @@ test("Can set id via constructor argument", () => {
 
 test("Can set email via constructor argument", () => {
   const employee = new Employee("Ruth", 1, "ruth@email.com");
-  expect(employee.email).toBe("ruth@email.com;
+  expect(employee.email).toBe("ruth@email.com");
 });
 
 test("Can get name via getName()", () => {
