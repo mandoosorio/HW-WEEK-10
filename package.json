@@ -1,0 +1,19 @@
+{
+  "name": "hw-week-10",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruthyk/HW-WEEK-10.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ruthyk/HW-WEEK-10/issues"
+  },
+  "homepage": "https://github.com/ruthyk/HW-WEEK-10#readme"
+}
