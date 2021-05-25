@@ -4,7 +4,11 @@ const jest = require("jest");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Employee = require("./lib/Employee")
+const Employee = require("./lib/Employee");
+const path = require("path");
+const OUTPUT_DIR = path.resolve (__dirname, "output");
+const outputPath = path.join (OUTPUT_DIR, "index.html");
+const render = require ("./src/template.js");
 
 let Staff = [];
 
@@ -95,30 +99,29 @@ function addNewEmployee() {
   inquirer.prompt(selectRole)
     .then(response => {
         if (response.role === "Manager") {
-            if (canAddManager) {
+             // if (canAddManager) {
                 inquirer.prompt(questions.Manager)
                     .then(response => {
-                        const manager = new Manager
+                        const manager = 
                             (
                                 response.name,
                                 response.id,
                                 response.email,
                                 response.officeNumber
                             );
-                        team.push(manager);
-                        canAddManager = false;
+                        Staff.push(manager);
+                        // canAddManager = false;
                         if (response.addNew === "yes") {
                             addNewEmployee();
                         } else {
                             generate();
                         }
                     });
-            } else {
-                //only 1 manager
-                console.log("There is a manager already!")
-                addNewEmployee();
-            }
-
+            // } else {
+            //     //only 1 manager
+            //     console.log("There is a manager already!")
+            //     addNewEmployee();
+            // }
 
         } else if (response.role === "Engineer") {
             inquirer.prompt(questions.Engineer)
@@ -130,7 +133,7 @@ function addNewEmployee() {
                             response.email,
                             response.github
                         );
-                    team.push(engineer);
+                    Staff.push(engineer);
                     if (response.addNew === "yes") {
                         addNewEmployee();
                     } else {
@@ -148,7 +151,7 @@ function addNewEmployee() {
                             response.email,
                             response.school
                         );
-                    team.push(intern);
+                    Staff.push(intern);
                     if (response.addNew === "yes") {
                         addNewEmployee();
                     } else {
@@ -162,7 +165,8 @@ function addNewEmployee() {
 addNewEmployee();
 
 function generate() {
-fs.writeFileSync(outputPath, render(team), "utf-8");
+    console.log (Staff);
+fs.writeFileSync(outputPath, render(Staff), "utf-8");
 process.exit(0);
 }
 

@@ -1,0 +1,147 @@
+
+:root {
+    --dark-gray: #353A3F;
+    --light-white: #F6F7F8;
+    --tan: #F9F5F2;
+    --white: white;
+}
+.border {
+    border: 1px solid black;
+}
+
+/* Default font class */
+.font {
+    font-family: orpheuspro, serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* Font weight classes */
+.f200 {
+    font-weight: 200;
+}
+
+.f400 {
+    font-weight: 400;
+}
+
+.f600 {
+    font-weight: 600;
+}
+
+.f700 {
+    font-weight: 700;
+}
+
+.f800 {
+    font-weight: 800;
+}
+
+.f900 {
+    font-weight: 900;
+}
+
+.title {
+    font-size: 30px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    font-size: 40px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background:lightskyblue;  
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+    transition: all 150ms ease-in-out;
+}
+
+.user-container {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+.card {
+    cursor: pointer;
+    position: relative;
+    height: 205px;
+    width: 280px;
+    margin: 40px;
+    border-radius: 15px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.041), 
+                0 2px 4px rgba(0, 0, 0, 0.034), 
+                0 4px 8px rgba(0, 0, 0, 0.027), 
+                0 8px 16px rgba(0, 0, 0, 0.027),
+                0 16px 32px rgba(0, 0, 0, 0.034), 
+                0 32px 64px rgba(0, 0, 0, 0.027);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 150ms ease-in-out;
+}
+
+.id {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    opacity: 40%;
+}
+
+.card a {
+    text-decoration: none;
+    color: var(--dark-gray);
+    opacity: 70%;
+    transition: all 150ms ease-in-out;
+}
+
+
+.card:hover .icon {
+    background: white;
+    background: -webkit-linear-gradient(to right, white, white);  /* Chrome 10-25, Safari 5.1-6 */
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}
+
+
+
+.card:hover {
+    color: white;
+    box-shadow: none;
+    background: lightblue;
+    }
+
+.card:hover a {
+    color: white;
+}
+
+.type {
+    font-size: 14px;
+    padding: 5px;
+}
+
+.type-elements {
+    font-size: 12px;
+    padding: 5px;
+    opacity: 70%;
+}
+
+@media screen and (max-width: 500px) {
+    .desc {
+        font-size: 15px;
+        width: 90%;
+        text-align: center;
+    }
+
+}
