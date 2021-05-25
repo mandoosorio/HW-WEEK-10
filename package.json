@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/ruthyk/HW-WEEK-10#readme",
   "dependencies": {
-    "inquirer": "^8.1.0",
+    "inquirer": "^8.1.0"
+  },
+  "devDependencies": {
     "jest": "^26.6.3"
   }
 }

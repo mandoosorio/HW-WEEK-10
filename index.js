@@ -1,3 +1,5 @@
+//in order to run all tests, just enter npm test in command line and the tests should run
+
 const inquirer = require("inquirer");
 const fs = require("fs");
 
