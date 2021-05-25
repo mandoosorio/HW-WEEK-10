@@ -36,6 +36,12 @@ const questions = {
         message: "Please Enter Team Manager's Office Number: ",
         name: "officeNumber",
     },
+    {
+        type: "list",
+        message: "would you like to add another employee?",
+        name: "addNew", 
+        choices: ["yes", "no"]
+    }
     ],
 
 
@@ -60,6 +66,12 @@ const questions = {
         message: "Please Enter Engineer's Github username: ",
         name: "github",
     },
+    {
+        type: "list",
+        message: "would you like to add another employee?",
+        name: "addNew", 
+        choices: ["yes", "no"]
+    }
     ],
 
      Intern: [
@@ -83,6 +95,12 @@ const questions = {
         message: "Please Enter Intern's University/College Name: ",
         name: "school",
     },
+    {
+        type: "list",
+        message: "would you like to add another employee?",
+        name: "addNew", 
+        choices: ["yes", "no"]
+    }
     ]
 };
 
@@ -99,30 +117,24 @@ function addNewEmployee() {
   inquirer.prompt(selectRole)
     .then(response => {
         if (response.role === "Manager") {
-             // if (canAddManager) {
-                inquirer.prompt(questions.Manager)
-                    .then(response => {
-                        const manager = 
-                            (
-                                response.name,
-                                response.id,
-                                response.email,
-                                response.officeNumber
-                            );
-                        Staff.push(manager);
-                        // canAddManager = false;
-                        if (response.addNew === "yes") {
-                            addNewEmployee();
-                        } else {
-                            generate();
-                        }
-                    });
-            // } else {
-            //     //only 1 manager
-            //     console.log("There is a manager already!")
-            //     addNewEmployee();
-            // }
-
+            inquirer.prompt(questions.Manager)
+                .then(response => {
+                    console.log("responses", response);
+                    const manager = new Manager
+                        (
+                            response.name,
+                            response.id,
+                            response.email,
+                            response.officeNumber
+                        );
+                    Staff.push(manager);
+                    // canAddManager = false;
+                    if (response.addNew === "yes") {
+                        addNewEmployee();
+                    } else {
+                        generate();
+                    }
+                });
         } else if (response.role === "Engineer") {
             inquirer.prompt(questions.Engineer)
                 .then(response => {
@@ -140,7 +152,6 @@ function addNewEmployee() {
                         generate();
                     };
                 });
-
         } else if (response.role === "Intern") {
             inquirer.prompt(questions.Intern)
                 .then(response => {
@@ -165,8 +176,8 @@ function addNewEmployee() {
 addNewEmployee();
 
 function generate() {
-    console.log (Staff);
-fs.writeFileSync(outputPath, render(Staff), "utf-8");
-process.exit(0);
+    console.log ("staff object", Staff);
+    fs.writeFileSync(outputPath, render(Staff), "utf-8");
+    process.exit(0);
 }
 
