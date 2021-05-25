@@ -1,15 +1,21 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const jest = require("jest");
+
+//Models that we will use to create our employee objects
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Employee = require("./lib/Employee");
+
 const path = require("path");
+//the "where" 
 const OUTPUT_DIR = path.resolve (__dirname, "output");
+//the "what" -- an index.html file in OUTPUT_DIR which is the Output folder
 const outputPath = path.join (OUTPUT_DIR, "index.html");
+
+//when we use the render const at the end of this file, this will run the code in our template.js file
 const render = require ("./src/template.js");
 
+//array that will hold all the employees created from the command line prompt
 let Staff = [];
 
 // manager questions
@@ -120,6 +126,8 @@ function addNewEmployee() {
             inquirer.prompt(questions.Manager)
                 .then(response => {
                     console.log("responses", response);
+                    //Manager is our model in which we can make an object out of, which has predefined methods like getEmail(), and so we create a new manager employee object out of this model
+                    //the same applies to Engineer and Inter
                     const manager = new Manager
                         (
                             response.name,
@@ -127,8 +135,9 @@ function addNewEmployee() {
                             response.email,
                             response.officeNumber
                         );
+                    //once we create our new employee object, we add it into our array
                     Staff.push(manager);
-                    // canAddManager = false;
+                    
                     if (response.addNew === "yes") {
                         addNewEmployee();
                     } else {
@@ -173,11 +182,16 @@ function addNewEmployee() {
     });
 };
 
+//we run the function after we define it
 addNewEmployee();
 
+//this function will be in charge of creating our html file with the html we create in template.js
 function generate() {
     console.log ("staff object", Staff);
+    //outputPath is the variable we assigned with the directory in which our html file will be created in
+    //utf-8 is the html format file name
+    //before we create the file, we call render(Staff), which will create the html we want, and then the file will be create in our Output folder
+    //                where         what         format
     fs.writeFileSync(outputPath, render(Staff), "utf-8");
     process.exit(0);
 }
-
